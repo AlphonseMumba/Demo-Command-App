@@ -8,7 +8,11 @@
     <title>SwiftShop - Votre Marché en Ligne</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="styles.css">
+    align-items: center;
+    gap: var(--spacing-sm);
+</head>
+
 </head>
 <body>
     <a href="#main-content" class="skip-link">Aller au contenu principal</a>
@@ -16,7 +20,7 @@
     <header class="header" role="banner">
         <div class="header__top">
             <div class="header__top-info">
-                <span>🇨🇩 Livraison rapide disponible partout à Kinshasa</span>
+                <span>🇨🇩 Livraison rapide à Kinshasa et dans toute la RDC</span>
             </div>
             <div class="header__top-links">
                 <a href="tel:+243842315918" class="header__top-link">
@@ -44,21 +48,20 @@
                     aria-label="Rechercher des produits"
                     autocomplete="off"
                 >
-                <button class="search__button" data-action="search" aria-label="Lancer la recherche">
+                <button class="search__button" onclick="handleSearch()" aria-label="Lancer la recherche">
                     <i class="fas fa-search" aria-hidden="true"></i>
                 </button>
             </div>
             <div class="header__actions">
-                <button class="currency-toggle" data-action="toggle-currency" aria-label="Changer de devise">
+                <button class="currency-toggle" onclick="toggleCurrency()" aria-label="Changer de devise">
                     <span class="currency-toggle__flag" id="currencyFlag">🇨🇩</span>
                     <span id="currencyLabel">CDF</span>
                     <i class="fas fa-chevron-down" aria-hidden="true"></i>
                 </button>
-                <button class="icon-button" data-action="toggle-cart" aria-label="Ouvrir le panier">
+                <button class="icon-button" onclick="toggleCart()" aria-label="Ouvrir le panier">
                     <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                     <span class="icon-button__badge" id="cartCount" aria-label="0 articles">0</span>
                 </button>
-                <button id="authButton" class="button button--ghost" data-action="open-auth-modal" aria-label="Se connecter">Se connecter</button>
             </div>
         </div>
     </header>
@@ -138,7 +141,7 @@
                 <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                 Mon Panier
             </h2>
-            <button class="cart-sidebar__close" data-action="toggle-cart" aria-label="Fermer le panier">
+            <button class="cart-sidebar__close" onclick="toggleCart()" aria-label="Fermer le panier">
                 <i class="fas fa-times" aria-hidden="true"></i>
             </button>
         </div>
@@ -164,7 +167,7 @@
                     <span id="cartTotal">0 FC</span>
                 </div>
             </div>
-            <button class="cart-sidebar__checkout" data-action="show-checkout-modal">
+            <button class="cart-sidebar__checkout" onclick="showCheckoutModal()">
                 <i class="fas fa-credit-card" aria-hidden="true"></i>
                 Passer la commande
             </button>
@@ -218,23 +221,13 @@
                             <option value="card">Carte bancaire</option>
                         </select>
                     </div>
-                    <div class="form-group" id="mobilePaymentOptions" style="display:none;">
-                        <label class="form-group__label" for="mobileProvider">Fournisseur Mobile Money</label>
-                        <select id="mobileProvider" class="form-group__select">
-                            <option value="orange">Orange Money (orangeMoney.cd)</option>
-                            <option value="airtel">Airtel Money (airtelMoney.cd)</option>
-                            <option value="mpesa">M-Pesa</option>
-                        </select>
-                        <label class="form-group__label" for="mobilePhone" style="margin-top:8px;">Téléphone pour paiement</label>
-                        <input type="tel" id="mobilePhone" class="form-group__input" placeholder="Ex: +243 82X XXX XXX">
-                    </div>
                 </div>
             </div>
             <div class="modal__actions">
-                <button class="button button--secondary" data-action="close-checkout-modal">
+                <button class="button button--secondary" onclick="closeCheckoutModal()">
                     <i class="fas fa-times" aria-hidden="true"></i> Annuler
                 </button>
-                <button class="button button--primary" data-action="confirm-order">
+                <button class="button button--primary" onclick="confirmOrder()">
                     <i class="fas fa-check" aria-hidden="true"></i> Confirmer
                 </button>
             </div>
@@ -250,7 +243,7 @@
                 <p class="success-modal__text">Merci pour votre achat chez SwiftShop</p>
                 <div class="success-modal__order-number">N° <span id="orderNumber"></span></div>
                 <p class="success-modal__text">Vous recevrez un SMS de confirmation sous peu.</p>
-                <button class="button button--primary" data-action="close-success-modal" style="margin-top: 20px; width: 100%;">
+                <button class="button button--primary" onclick="closeSuccessModal()" style="margin-top: 20px; width: 100%;">
                     <i class="fas fa-home" aria-hidden="true"></i> Retour à l'accueil
                 </button>
             </div>
@@ -309,54 +302,7 @@
     <!-- ARIA Live Region -->
     <div id="ariaAnnouncer" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
 
-    <!-- Auth Modal -->
-    <div class="modal-overlay" id="authModal" role="dialog" aria-labelledby="authTitle" aria-modal="true">
-        <div class="modal">
-            <div class="modal__header">
-                <h2 id="authTitle">Se connecter</h2>
-                <button data-action="close-auth-modal" aria-label="Fermer">✕</button>
-            </div>
-            <div class="modal__body">
-                <div id="authForms">
-                    <form id="loginForm" data-action="login-form">
-                        <div>
-                            <input id="loginEmail" type="email" placeholder="votre.email@exemple.com" required>
-                            <label for="loginEmail">Email</label>
-                        </div>
-                        <div>
-                            <input id="loginPassword" type="password" placeholder="Votre mot de passe" required>
-                            <label for="loginPassword">Mot de passe</label>
-                        </div>
-                        <button type="submit">Se connecter</button>
-                        <p>Pas de compte ? <a href="#" data-action="show-register-form">Créer un compte</a></p>
-                    </form>
-
-                    <form id="registerForm" style="display:none;" data-action="register-form">
-                        <div>
-                            <input id="regName" type="text" placeholder="Votre nom complet" required>
-                            <label for="regName">Nom</label>
-                        </div>
-                        <div>
-                            <input id="regEmail" type="email" placeholder="votre.email@exemple.com" required>
-                            <label for="regEmail">Email</label>
-                        </div>
-                        <div>
-                            <input id="regPhone" type="tel" placeholder="+243 XX XXX XXXX">
-                            <label for="regPhone">Téléphone</label>
-                        </div>
-                        <div>
-                            <input id="regPassword" type="password" placeholder="Choisissez un mot de passe" required>
-                            <label for="regPassword">Mot de passe</label>
-                        </div>
-                        <button type="submit">Créer un compte</button>
-                        <p>Déjà inscrit ? <a href="#" data-action="show-login-form">Se connecter</a></p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="../utils/app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
 
