@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin - SwiftShop</title>
+  <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+  <div class="admin-container">
+    <h1>Administration SwiftShop</h1>
+    <p id="adminNotice" class="muted">Vérification de l'auth...</p>
+
+    <section id="productsSection">
+      <h2>Produits</h2>
+      <div class="row" style="margin-bottom:12px;align-items:center;">
+        <div class="col">
+          <input id="pName" placeholder="Nom" style="width:100%">
+        </div>
+        <div style="width:160px"><input id="pCategory" placeholder="Catégorie" style="width:100%"></div>
+        <div style="width:160px"><input id="pPrice" placeholder="Prix CDF" type="number" style="width:100%"></div>
+        <div><button id="createProductBtn" class="button">Créer produit</button></div>
+      </div>
+      <table id="productsTable">
+        <thead><tr><th>ID</th><th>Nom</th><th>Catégorie</th><th>Prix (CDF)</th><th>Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="ordersSection" style="margin-top:24px;">
+      <h2>Commandes</h2>
+      <table id="ordersTable">
+        <thead><tr><th>ID</th><th>Utilisateur</th><th>Montant</th><th>Statut</th><th>Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section style="margin-top:24px;">
+      <button data-action="back-to-site" class="button button--secondary">Retour au site</button>
+    </section>
+  </div>
+
+  <script src="../utils/admin.js"></script>
+</body>
+</html>
