@@ -3,19 +3,15 @@
  * E-commerce Application for Congo (DRC)
  * © 2025 SwiftShop
  */
-'use strict';
+"use strict";
+// SwiftShop application - comments trimmed for clarity
 
 /* ============================================
-   DATABASE - Products Data Store
+   PRODUCTS SERVICE (client-side) - load from server
    ============================================ */
 const ProductsDatabase = {
-    // Exchange rate: 1 USD ≈ 2250 CDF
     exchangeRate: 2250,
-    
-    // Shipping fee in CDF
     shippingFee: 5000,
-    
-    // Categories definition
     categories: {
         all: { name: 'Tous', icon: 'fa-th-large' },
         food: { name: 'Nourriture', icon: 'fa-utensils' },
@@ -24,535 +20,50 @@ const ProductsDatabase = {
         home: { name: 'Maison', icon: 'fa-couch' },
         beauty: { name: 'Beauté', icon: 'fa-spa' }
     },
-    
-    // Products collection
-    products: [
-        // ========== FOOD ==========
-        {
-            id: 1,
-            name: "Sac de Riz 25kg Premium",
-            category: "food",
-            priceCDF: 85000,
-            icon: "🍚",
-            rating: 4.8,
-            reviews: 234,
-            badge: "Populaire",
-            description: "Riz de qualité supérieure importé",
-            inStock: true
-        },
-        {
-            id: 2,
-            name: "Huile de Palme 5L",
-            category: "food",
-            priceCDF: 28000,
-            icon: "🫒",
-            rating: 4.6,
-            reviews: 189,
-            badge: null,
-            description: "Huile de palme naturelle",
-            inStock: true
-        },
-        {
-            id: 3,
-            name: "Poulet Fumé 1kg",
-            category: "food",
-            priceCDF: 22000,
-            icon: "🍗",
-            rating: 4.9,
-            reviews: 456,
-            badge: "-15%",
-            description: "Poulet fumé traditionnel",
-            inStock: true
-        },
-        {
-            id: 4,
-            name: "Pondu Frais (Saka-Saka)",
-            category: "food",
-            priceCDF: 8500,
-            icon: "🥬",
-            rating: 4.7,
-            reviews: 312,
-            badge: null,
-            description: "Feuilles de manioc fraîches",
-            inStock: true
-        },
-        {
-            id: 5,
-            name: "Poisson Salé (Makayabu)",
-            category: "food",
-            priceCDF: 35000,
-            icon: "🐟",
-            rating: 4.5,
-            reviews: 178,
-            badge: null,
-            description: "Poisson salé séché traditionnel",
-            inStock: true
-        },
-        {
-            id: 6,
-            name: "Pack Boissons Sucrées x12",
-            category: "food",
-            priceCDF: 42000,
-            icon: "🥤",
-            rating: 4.4,
-            reviews: 267,
-            badge: "Nouveau",
-            description: "Assortiment de boissons gazeuses",
-            inStock: true
-        },
-        {
-            id: 7,
-            name: "Farine de Manioc 10kg",
-            category: "food",
-            priceCDF: 32000,
-            icon: "🌾",
-            rating: 4.6,
-            reviews: 145,
-            badge: null,
-            description: "Farine de manioc pure",
-            inStock: true
-        },
-        {
-            id: 8,
-            name: "Haricots Rouges 5kg",
-            category: "food",
-            priceCDF: 25000,
-            icon: "🫘",
-            rating: 4.5,
-            reviews: 98,
-            badge: null,
-            description: "Haricots rouges de qualité",
-            inStock: true
-        },
+    products: [],
 
-        // ========== CLOTHING ==========
-        {
-            id: 9,
-            name: "Chemise Wax Homme",
-            category: "clothing",
-            priceCDF: 45000,
-            icon: "👔",
-            rating: 4.7,
-            reviews: 145,
-            badge: null,
-            description: "Chemise africaine en tissu wax",
-            inStock: true
-        },
-        {
-            id: 10,
-            name: "Robe Pagne Africaine",
-            category: "clothing",
-            priceCDF: 75000,
-            icon: "👗",
-            rating: 4.9,
-            reviews: 389,
-            badge: "Tendance",
-            description: "Robe élégante en pagne africain",
-            inStock: true
-        },
-        {
-            id: 11,
-            name: "Costume 3 Pièces Homme",
-            category: "clothing",
-            priceCDF: 280000,
-            icon: "🤵",
-            rating: 4.8,
-            reviews: 98,
-            badge: null,
-            description: "Costume complet avec veste, pantalon et gilet",
-            inStock: true
-        },
-        {
-            id: 12,
-            name: "Chaussures en Cuir",
-            category: "clothing",
-            priceCDF: 120000,
-            icon: "👞",
-            rating: 4.6,
-            reviews: 234,
-            badge: null,
-            description: "Chaussures en cuir véritable",
-            inStock: true
-        },
-        {
-            id: 13,
-            name: "Sac à Main Femme",
-            category: "clothing",
-            priceCDF: 65000,
-            icon: "👜",
-            rating: 4.5,
-            reviews: 312,
-            badge: "-20%",
-            description: "Sac à main élégant pour femme",
-            inStock: true
-        },
-        {
-            id: 14,
-            name: "Montre Classique",
-            category: "clothing",
-            priceCDF: 95000,
-            icon: "⌚",
-            rating: 4.7,
-            reviews: 187,
-            badge: null,
-            description: "Montre classique pour homme et femme",
-            inStock: true
-        },
-        {
-            id: 15,
-            name: "Ensemble Boubou Brodé",
-            category: "clothing",
-            priceCDF: 150000,
-            icon: "👘",
-            rating: 4.8,
-            reviews: 123,
-            badge: "Premium",
-            description: "Boubou traditionnel avec broderies",
-            inStock: true
-        },
-
-        // ========== ELECTRONICS ==========
-        {
-            id: 16,
-            name: "Smartphone Android 128GB",
-            category: "electronics",
-            priceCDF: 450000,
-            icon: "📱",
-            rating: 4.6,
-            reviews: 567,
-            badge: "Top Vente",
-            description: "Smartphone dernière génération",
-            inStock: true
-        },
-        {
-            id: 17,
-            name: "Laptop Core i5 8GB RAM",
-            category: "electronics",
-            priceCDF: 1200000,
-            icon: "💻",
-            rating: 4.8,
-            reviews: 234,
-            badge: null,
-            description: "Ordinateur portable performant",
-            inStock: true
-        },
-        {
-            id: 18,
-            name: "TV LED 43 Pouces",
-            category: "electronics",
-            priceCDF: 850000,
-            icon: "📺",
-            rating: 4.7,
-            reviews: 456,
-            badge: null,
-            description: "Télévision LED Full HD",
-            inStock: true
-        },
-        {
-            id: 19,
-            name: "Écouteurs Bluetooth",
-            category: "electronics",
-            priceCDF: 85000,
-            icon: "🎧",
-            rating: 4.5,
-            reviews: 678,
-            badge: null,
-            description: "Écouteurs sans fil haute qualité",
-            inStock: true
-        },
-        {
-            id: 20,
-            name: "Groupe Électrogène 3.5kVA",
-            category: "electronics",
-            priceCDF: 750000,
-            icon: "🔌",
-            rating: 4.4,
-            reviews: 123,
-            badge: null,
-            description: "Générateur électrique puissant",
-            inStock: true
-        },
-        {
-            id: 21,
-            name: "Ventilateur Rechargeable",
-            category: "electronics",
-            priceCDF: 95000,
-            icon: "🌀",
-            rating: 4.6,
-            reviews: 345,
-            badge: "Nouveau",
-            description: "Ventilateur avec batterie intégrée",
-            inStock: true
-        },
-        {
-            id: 22,
-            name: "Panneau Solaire 200W",
-            category: "electronics",
-            priceCDF: 320000,
-            icon: "☀️",
-            rating: 4.7,
-            reviews: 89,
-            badge: "Éco",
-            description: "Panneau solaire haute performance",
-            inStock: true
-        },
-
-        // ========== HOME ==========
-        {
-            id: 23,
-            name: "Lit King Size + Matelas",
-            category: "home",
-            priceCDF: 680000,
-            icon: "🛏️",
-            rating: 4.8,
-            reviews: 89,
-            badge: null,
-            description: "Lit complet avec matelas orthopédique",
-            inStock: true
-        },
-        {
-            id: 24,
-            name: "Canapé 5 Places",
-            category: "home",
-            priceCDF: 520000,
-            icon: "🛋️",
-            rating: 4.7,
-            reviews: 167,
-            badge: null,
-            description: "Canapé confortable en cuir synthétique",
-            inStock: true
-        },
-        {
-            id: 25,
-            name: "Table à Manger 6 Places",
-            category: "home",
-            priceCDF: 320000,
-            icon: "🪑",
-            rating: 4.6,
-            reviews: 234,
-            badge: null,
-            description: "Table à manger avec 6 chaises",
-            inStock: true
-        },
-        {
-            id: 26,
-            name: "Réfrigérateur 350L",
-            category: "home",
-            priceCDF: 980000,
-            icon: "❄️",
-            rating: 4.8,
-            reviews: 345,
-            badge: "Promo",
-            description: "Réfrigérateur double porte économique",
-            inStock: true
-        },
-        {
-            id: 27,
-            name: "Cuisinière à Gaz 4 Feux",
-            category: "home",
-            priceCDF: 420000,
-            icon: "🍳",
-            rating: 4.5,
-            reviews: 278,
-            badge: null,
-            description: "Cuisinière à gaz avec four intégré",
-            inStock: true
-        },
-        {
-            id: 28,
-            name: "Machine à Laver 7kg",
-            category: "home",
-            priceCDF: 650000,
-            icon: "🧺",
-            rating: 4.7,
-            reviews: 189,
-            badge: null,
-            description: "Lave-linge automatique",
-            inStock: true
-        },
-        {
-            id: 29,
-            name: "Climatiseur Split 12000 BTU",
-            category: "home",
-            priceCDF: 850000,
-            icon: "❄️",
-            rating: 4.6,
-            reviews: 156,
-            badge: null,
-            description: "Climatiseur économique avec télécommande",
-            inStock: true
-        },
-
-        // ========== BEAUTY ==========
-        {
-            id: 30,
-            name: "Crème Éclaircissante Bio",
-            category: "beauty",
-            priceCDF: 35000,
-            icon: "✨",
-            rating: 4.6,
-            reviews: 567,
-            badge: null,
-            description: "Crème naturelle pour le visage",
-            inStock: true
-        },
-        {
-            id: 31,
-            name: "Parfum Femme 100ml",
-            category: "beauty",
-            priceCDF: 85000,
-            icon: "💐",
-            rating: 4.8,
-            reviews: 389,
-            badge: "Best Seller",
-            description: "Parfum floral longue durée",
-            inStock: true
-        },
-        {
-            id: 32,
-            name: "Kit Maquillage Complet",
-            category: "beauty",
-            priceCDF: 120000,
-            icon: "💄",
-            rating: 4.7,
-            reviews: 234,
-            badge: null,
-            description: "Palette de maquillage professionnelle",
-            inStock: true
-        },
-        {
-            id: 33,
-            name: "Huile de Coco Naturelle",
-            category: "beauty",
-            priceCDF: 18000,
-            icon: "🥥",
-            rating: 4.9,
-            reviews: 456,
-            badge: null,
-            description: "Huile de coco 100% naturelle",
-            inStock: true
-        },
-        {
-            id: 34,
-            name: "Perruque Brésilienne",
-            category: "beauty",
-            priceCDF: 180000,
-            icon: "💇",
-            rating: 4.5,
-            reviews: 278,
-            badge: "Premium",
-            description: "Perruque en cheveux naturels",
-            inStock: true
-        },
-        {
-            id: 35,
-            name: "Gel Coiffant Homme",
-            category: "beauty",
-            priceCDF: 12000,
-            icon: "💈",
-            rating: 4.4,
-            reviews: 189,
-            badge: null,
-            description: "Gel fixation forte",
-            inStock: true
+    async load() {
+        try {
+            const res = await fetch('/api/products');
+            if (!res.ok) throw new Error('Erreur chargement produits');
+            const data = await res.json();
+            this.products = data.products || [];
+            this.exchangeRate = data.exchangeRate || this.exchangeRate;
+            this.shippingFee = data.shippingFee || this.shippingFee;
+        } catch (err) {
+            console.error('Failed to load products', err);
         }
-    ],
-
-    // ========== DATABASE METHODS ==========
-    
-    /**
-     * Get all products
-     * @returns {Array} All products
-     */
-    getAll() {
-        return [...this.products];
     },
 
-    /**
-     * Get product by ID
-     * @param {number} id - Product ID
-     * @returns {Object|null} Product or null
-     */
-    getById(id) {
-        return this.products.find(p => p.id === id) || null;
-    },
-
-    /**
-     * Get products by category
-     * @param {string} category - Category slug
-     * @returns {Array} Filtered products
-     */
-    getByCategory(category) {
-        if (category === 'all') return this.getAll();
-        return this.products.filter(p => p.category === category);
-    },
-
-    /**
-     * Search products by name or description
-     * @param {string} query - Search query
-     * @returns {Array} Matching products
-     */
+    getAll() { return [...this.products]; },
+    getById(id) { return this.products.find(p => p.id === id) || null; },
+    getByCategory(category) { return category === 'all' ? this.getAll() : this.products.filter(p => p.category === category); },
     search(query) {
-        const normalizedQuery = query.toLowerCase().trim();
+        const normalizedQuery = (query || '').toLowerCase().trim();
         if (!normalizedQuery) return this.getAll();
-        
-        return this.products.filter(p => 
+        return this.products.filter(p =>
             p.name.toLowerCase().includes(normalizedQuery) ||
-            p.description.toLowerCase().includes(normalizedQuery) ||
-            p.category.toLowerCase().includes(normalizedQuery)
+            (p.description || '').toLowerCase().includes(normalizedQuery) ||
+            (p.category || '').toLowerCase().includes(normalizedQuery)
         );
     },
-
-    /**
-     * Get category name
-     * @param {string} categorySlug - Category slug
-     * @returns {string} Category display name
-     */
-    getCategoryName(categorySlug) {
-        return this.categories[categorySlug]?.name || categorySlug;
-    },
-
-    /**
-     * Filter and search products
-     * @param {Object} filters - Filter options
-     * @returns {Array} Filtered products
-     */
+    getCategoryName(categorySlug) { return this.categories[categorySlug]?.name || categorySlug; },
     filter({ category = 'all', query = '', sortBy = 'default' } = {}) {
-        let results = category === 'all' 
-            ? this.getAll() 
-            : this.getByCategory(category);
-
+        let results = category === 'all' ? this.getAll() : this.getByCategory(category);
         if (query) {
             const normalizedQuery = query.toLowerCase().trim();
-            results = results.filter(p => 
-                p.name.toLowerCase().includes(normalizedQuery) ||
-                p.description.toLowerCase().includes(normalizedQuery)
-            );
+            results = results.filter(p => p.name.toLowerCase().includes(normalizedQuery) || (p.description || '').toLowerCase().includes(normalizedQuery));
         }
-
-        // Sort results
         switch (sortBy) {
-            case 'price-asc':
-                results.sort((a, b) => a.priceCDF - b.priceCDF);
-                break;
-            case 'price-desc':
-                results.sort((a, b) => b.priceCDF - a.priceCDF);
-                break;
-            case 'rating':
-                results.sort((a, b) => b.rating - a.rating);
-                break;
-            case 'name':
-                results.sort((a, b) => a.name.localeCompare(b.name));
-                break;
+            case 'price-asc': results.sort((a, b) => a.priceCDF - b.priceCDF); break;
+            case 'price-desc': results.sort((a, b) => b.priceCDF - a.priceCDF); break;
+            case 'rating': results.sort((a, b) => b.rating - a.rating); break;
+            case 'name': results.sort((a, b) => a.name.localeCompare(b.name)); break;
         }
-
         return results;
     }
 };
-
-/* ============================================
-   APPLICATION STATE
-   ============================================ */
+/* ACCESSIBILITY HELPERS */
 const AppState = {
     cart: [],
     wishlist: [],
@@ -698,7 +209,8 @@ function renderProducts() {
                 ` : ''}
                 <button 
                     class="product-card__wishlist ${isWished ? 'product-card__wishlist--active' : ''}"
-                    onclick="toggleWishlist(${product.id})"
+                    data-action="toggle-wishlist"
+                    data-product-id="${product.id}"
                     aria-label="${isWished ? 'Retirer des favoris' : 'Ajouter aux favoris'}"
                     aria-pressed="${isWished}"
                 >
@@ -720,7 +232,8 @@ function renderProducts() {
                     </div>
                     <button 
                         class="product-card__button" 
-                        onclick="addToCart(${product.id})"
+                        data-action="add-to-cart"
+                        data-product-id="${product.id}"
                         aria-label="Ajouter ${product.name} au panier"
                     >
                         <i class="fas fa-cart-plus" aria-hidden="true"></i>
@@ -774,7 +287,9 @@ function renderCart() {
                     <div class="quantity-control">
                         <button 
                             class="quantity-control__button" 
-                            onclick="updateQuantity(${item.id}, -1)"
+                            data-action="update-quantity"
+                            data-product-id="${item.id}"
+                            data-delta="-1"
                             aria-label="Réduire la quantité de ${item.name}"
                             ${item.quantity <= 1 ? 'aria-label="Supprimer ' + item.name + ' du panier"' : ''}
                         >
@@ -783,7 +298,9 @@ function renderCart() {
                         <span class="quantity-control__value" aria-label="Quantité: ${item.quantity}">${item.quantity}</span>
                         <button 
                             class="quantity-control__button" 
-                            onclick="updateQuantity(${item.id}, 1)"
+                            data-action="update-quantity"
+                            data-product-id="${item.id}"
+                            data-delta="1"
                             aria-label="Augmenter la quantité de ${item.name}"
                         >
                             <i class="fas fa-plus" aria-hidden="true"></i>
@@ -792,7 +309,8 @@ function renderCart() {
                 </div>
                 <button 
                     class="cart-item__remove" 
-                    onclick="removeFromCart(${item.id})"
+                    data-action="remove-from-cart"
+                    data-product-id="${item.id}"
                     aria-label="Supprimer ${item.name} du panier"
                 >
                     <i class="fas fa-trash" aria-hidden="true"></i>
@@ -1010,6 +528,13 @@ function handleSearch() {
  */
 function showCheckoutModal() {
     if (AppState.cart.length === 0) return;
+    // Require authentication before checkout
+    const token = getAuthToken();
+    if (!token) {
+        showToast('Veuillez vous connecter avant de passer la commande', 'error');
+        openAuthModal();
+        return;
+    }
     
     toggleCart();
     
@@ -1049,13 +574,14 @@ function closeSuccessModal() {
 function closeAllModals() {
     closeCheckoutModal();
     closeSuccessModal();
+    closeAuthModal();
     if (AppState.isCartOpen) toggleCart();
 }
 
 /**
  * Confirm order
  */
-function confirmOrder() {
+async function confirmOrder() {
     const name = document.getElementById('customerName')?.value.trim();
     const phone = document.getElementById('customerPhone')?.value.trim();
     const address = document.getElementById('customerAddress')?.value.trim();
@@ -1089,31 +615,108 @@ function confirmOrder() {
         return;
     }
 
-    // Generate order number
+    // Generate order number and amounts
     const orderNumber = generateOrderNumber();
+    const subtotal = AppState.cart.reduce((sum, item) => sum + (item.priceCDF * item.quantity), 0);
+    const totalCDF = subtotal + ProductsDatabase.shippingFee;
     document.getElementById('orderNumber').textContent = orderNumber;
 
-    // Close checkout and show success
+    const paymentMethod = document.getElementById('paymentMethod')?.value;
+
+    // Ensure authenticated (safety check)
+    const token = getAuthToken();
+    if (!token) { showToast('Veuillez vous connecter pour continuer', 'error'); openAuthModal(); return; }
+
+    // Create order server-side
+    let orderResp;
+    try {
+        const orderPayload = {
+            cart: AppState.cart,
+            customer: { name, phone, address, commune: document.getElementById('customerCommune')?.value || '' },
+            paymentMethod,
+            provider: document.getElementById('mobileProvider')?.value || null
+        };
+        const r = await fetch('/api/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+            body: JSON.stringify(orderPayload)
+        });
+        orderResp = await r.json();
+        if (!r.ok) { showToast(orderResp.error || 'Impossible de créer la commande', 'error'); return; }
+    } catch (err) {
+        console.error('Order create error', err);
+        showToast('Erreur création commande', 'error');
+        return;
+    }
+
+    if (paymentMethod === 'mobile') {
+        const provider = document.getElementById('mobileProvider')?.value;
+        const mobilePhone = document.getElementById('mobilePhone')?.value.trim();
+
+        if (!mobilePhone) {
+            showFieldError('mobilePhone', 'Le téléphone pour Mobile Money est requis');
+            showToast('Veuillez fournir un numéro mobile pour le paiement', 'error');
+            return;
+        }
+
+        showToast('Initialisation du paiement Mobile Money...', 'success');
+
+        try {
+            const payload = {
+                orderNumber,
+                amountCDF: totalCDF,
+                name,
+                phone: mobilePhone,
+                orderId: orderResp.order?.id || null
+            };
+            const response = await processMobilePayment(provider, payload);
+
+            if (response && (response.status === 'success' || response.status === 'pending')) {
+                closeCheckoutModal();
+                const successModal = document.getElementById('successModal');
+                successModal.classList.add('modal-overlay--active');
+                AppState.isSuccessModalOpen = true;
+                trapFocus(successModal);
+
+                AppState.cart = [];
+                renderCart();
+
+                document.getElementById('customerName').value = '';
+                document.getElementById('customerPhone').value = '';
+                document.getElementById('customerAddress').value = '';
+                document.getElementById('customerCommune').value = '';
+                document.getElementById('paymentMethod').value = 'cash';
+                document.getElementById('mobilePhone').value = '';
+
+                announceToScreenReader(`Commande en cours: ${orderNumber}. Statut: ${response.status}`);
+                showToast('Paiement initié. Vous recevrez une confirmation par SMS.', 'success');
+            } else {
+                showToast('Le paiement a échoué. Réessayez.', 'error');
+            }
+        } catch (err) {
+            console.error('Payment error', err);
+            showToast('Erreur lors du paiement. Vérifiez votre connexion.', 'error');
+        }
+
+        return;
+    }
+
+    // Default: cash or card (client-side simulation)
     closeCheckoutModal();
-    
     const successModal = document.getElementById('successModal');
     successModal.classList.add('modal-overlay--active');
     AppState.isSuccessModalOpen = true;
-    
     trapFocus(successModal);
 
-    // Clear cart
     AppState.cart = [];
     renderCart();
 
-    // Clear form
     document.getElementById('customerName').value = '';
     document.getElementById('customerPhone').value = '';
     document.getElementById('customerAddress').value = '';
     document.getElementById('customerCommune').value = '';
     document.getElementById('paymentMethod').value = 'cash';
 
-    // Announce to screen readers
     announceToScreenReader(`Commande confirmée. Numéro de commande: ${orderNumber}`);
 }
 
@@ -1158,6 +761,159 @@ function clearFormErrors() {
         el.remove();
     });
 }
+
+/**
+ * Toggle visibility of mobile payment options
+ */
+function toggleMobileOptions() {
+    const method = document.getElementById('paymentMethod')?.value;
+    const mobileBox = document.getElementById('mobilePaymentOptions');
+    if (!mobileBox) return;
+    mobileBox.style.display = method === 'mobile' ? 'block' : 'none';
+}
+
+/**
+ * Send payment request to backend for the given provider
+ * This is a light wrapper; the backend should handle provider credentials.
+ */
+async function processMobilePayment(provider, payload) {
+    const url = `/api/payments/${provider}`;
+    const resp = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+    if (!resp.ok) throw new Error('Network response was not ok');
+    return resp.json();
+}
+
+/* ============================================
+   AUTH (client-side)
+   ============================================ */
+function getAuthToken() {
+    return localStorage.getItem('ss_token') || null;
+}
+
+function setAuthState(user, token) {
+    if (token) localStorage.setItem('ss_token', token);
+    if (user) localStorage.setItem('ss_user', JSON.stringify(user));
+    updateAuthButton();
+}
+
+function clearAuthState() {
+    localStorage.removeItem('ss_token');
+    localStorage.removeItem('ss_user');
+    updateAuthButton();
+}
+
+async function restoreAuthState() {
+    const token = getAuthToken();
+    if (!token) return updateAuthButton();
+    try {
+        const res = await fetch('/api/me', { headers: { Authorization: 'Bearer ' + token } });
+        if (!res.ok) { clearAuthState(); return; }
+        const user = await res.json();
+        setAuthState(user, token);
+    } catch (e) {
+        clearAuthState();
+    }
+}
+
+function updateAuthButton() {
+    const btn = document.getElementById('authButton');
+    const user = JSON.parse(localStorage.getItem('ss_user') || 'null');
+    if (!btn) return;
+    const adminLink = document.getElementById('adminLink');
+    if (user) {
+        btn.textContent = user.name || user.email || 'Mon compte';
+        btn.setAttribute('data-action', 'show-account-menu');
+        if (adminLink) adminLink.style.display = (user.role === 'admin') ? 'inline-block' : 'none';
+    } else {
+        btn.textContent = 'Se connecter';
+        btn.setAttribute('data-action', 'open-auth-modal');
+        if (adminLink) adminLink.style.display = 'none';
+    }
+}
+
+function showAccountMenu() {
+    // simple: offer logout
+    if (confirm('Se déconnecter ?')) logout();
+}
+
+function openAuthModal() {
+    const modal = document.getElementById('authModal');
+    if (!modal) return;
+    modal.classList.add('modal-overlay--active');
+    document.body.classList.add('no-scroll');
+    trapFocus(modal);
+    
+    // Focus first input
+    const firstInput = modal.querySelector('input');
+    if (firstInput) firstInput.focus();
+}
+
+function closeAuthModal() {
+    const modal = document.getElementById('authModal');
+    if (!modal) return;
+    modal.classList.remove('modal-overlay--active');
+    document.body.classList.remove('no-scroll');
+}
+
+function showRegisterForm() {
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('registerForm').style.display = 'block';
+    document.getElementById('authTitle').textContent = 'Créer un compte';
+}
+
+function showLoginForm() {
+    document.getElementById('loginForm').style.display = 'block';
+    document.getElementById('registerForm').style.display = 'none';
+    document.getElementById('authTitle').textContent = 'Se connecter';
+}
+
+async function registerUser() {
+    const name = document.getElementById('regName')?.value.trim();
+    const email = document.getElementById('regEmail')?.value.trim();
+    const phone = document.getElementById('regPhone')?.value.trim();
+    const password = document.getElementById('regPassword')?.value;
+    if (!email || !password) { showToast('Email et mot de passe requis', 'error'); return; }
+
+    try {
+        const res = await fetch('/api/auth/register', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, phone, password })
+        });
+        const data = await res.json();
+        if (!res.ok) { showToast(data.error || 'Erreur inscription', 'error'); return; }
+        setAuthState(data.user, data.token);
+        closeAuthModal();
+        showToast('Compte créé et connecté', 'success');
+    } catch (e) { console.error(e); showToast('Erreur serveur', 'error'); }
+}
+
+async function loginUser() {
+    const email = document.getElementById('loginEmail')?.value.trim();
+    const password = document.getElementById('loginPassword')?.value;
+    if (!email || !password) { showToast('Email et mot de passe requis', 'error'); return; }
+
+    try {
+        const res = await fetch('/api/auth/login', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if (!res.ok) { showToast(data.error || 'Erreur connexion', 'error'); return; }
+        setAuthState(data.user, data.token);
+        closeAuthModal();
+        showToast('Connecté', 'success');
+    } catch (e) { console.error(e); showToast('Erreur serveur', 'error'); }
+}
+
+function logout() {
+    clearAuthState();
+    showToast('Déconnecté', 'success');
+}
+
 
 /* ============================================
    TOAST NOTIFICATIONS
@@ -1238,12 +994,16 @@ function setupDarkMode() {
 /**
  * Initialize application
  */
-function initApp() {
+async function initApp() {
     setupDarkMode();
     setupNavigation();
     setupSearch();
+    await ProductsDatabase.load();
     renderProducts();
     renderCart();
+    // Payment UI
+    document.getElementById('paymentMethod')?.addEventListener('change', toggleMobileOptions);
+    toggleMobileOptions();
 
     // Add ARIA live region for announcements
     if (!document.getElementById('ariaAnnouncer')) {
@@ -1255,6 +1015,9 @@ function initApp() {
         document.body.appendChild(announcer);
     }
 
+    // Setup event listeners for data-action elements
+    setupActionListeners();
+
     // Handle Escape key globally
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
@@ -1264,6 +1027,99 @@ function initApp() {
 
     // Close cart when clicking overlay
     document.getElementById('cartOverlay')?.addEventListener('click', toggleCart);
+    // Load auth state (await so UI updates after token is restored)
+    await restoreAuthState();
+
+    // Wire authentication forms (submit handlers)
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) loginForm.addEventListener('submit', (e) => { e.preventDefault(); loginUser(); });
+
+    const registerForm = document.getElementById('registerForm');
+    if (registerForm) registerForm.addEventListener('submit', (e) => { e.preventDefault(); registerUser(); });
+}
+
+/**
+ * Setup event listeners for data-action elements
+ */
+function setupActionListeners() {
+    document.addEventListener('click', (e) => {
+        const action = e.target.closest('[data-action]')?.getAttribute('data-action');
+        if (!action) return;
+
+        const productId = e.target.closest('[data-product-id]')?.getAttribute('data-product-id');
+        const delta = e.target.closest('[data-delta]')?.getAttribute('data-delta');
+
+        switch (action) {
+            case 'search':
+                handleSearch();
+                break;
+            case 'toggle-currency':
+                toggleCurrency();
+                break;
+            case 'toggle-cart':
+                toggleCart();
+                break;
+            case 'open-auth-modal':
+                openAuthModal();
+                break;
+            case 'close-auth-modal':
+                closeAuthModal();
+                break;
+            case 'show-checkout-modal':
+                showCheckoutModal();
+                break;
+            case 'close-checkout-modal':
+                closeCheckoutModal();
+                break;
+            case 'confirm-order':
+                confirmOrder();
+                break;
+            case 'close-success-modal':
+                closeSuccessModal();
+                break;
+            case 'show-register-form':
+                showRegisterForm();
+                break;
+            case 'show-login-form':
+                showLoginForm();
+                break;
+            case 'back-to-site':
+                window.location.href = 'index.html';
+                break;
+            case 'show-account-menu':
+                showAccountMenu();
+                break;
+            case 'toggle-wishlist':
+                if (productId) toggleWishlist(parseInt(productId));
+                break;
+            case 'add-to-cart':
+                if (productId) addToCart(parseInt(productId));
+                break;
+            case 'update-quantity':
+                if (productId && delta) updateQuantity(parseInt(productId), parseInt(delta));
+                break;
+            case 'remove-from-cart':
+                if (productId) removeFromCart(parseInt(productId));
+                break;
+        }
+    });
+
+    // Handle form submissions
+    document.addEventListener('submit', (e) => {
+        const formAction = e.target.getAttribute('data-action');
+        if (!formAction) return;
+
+        e.preventDefault();
+
+        switch (formAction) {
+            case 'login-form':
+                loginUser();
+                break;
+            case 'register-form':
+                registerUser();
+                break;
+        }
+    });
 }
 
 // Start application when DOM is ready
