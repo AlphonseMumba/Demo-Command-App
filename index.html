@@ -1,58 +1,92 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KINU | L'Élégance Kinoise</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
-    <nav class="glass-nav">
-        <div class="nav-content">
-            <div class="logo">KINU<span>.</span></div>
-            <div class="nav-actions">
-                <div class="lang-pill">
-                    <select id="lang-select" onchange="updateUI()">
-                        <option value="fr">FR</option>
-                        <option value="ln">LN</option>
-                        <option value="sw">SW</option>
-                    </select>
-                </div>
-                <div class="cart-btn" onclick="toggleCart()">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    <span id="cart-count">0</span>
-                </div>
-            </div>
-        </div>
-    </nav>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>KINU | L'excellence à Kinshasa</title>
+		<link rel="stylesheet" href="styles.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
+	</head>
+	<body>
+		<nav class="glass-nav">
+			<div class="nav-content">
+				<div class="logo">KINU<span>.</span></div>
+				<div class="nav-actions">
+					<div class="lang-pill">
+						<select id="lang-select" onchange="updateUI()">
+							<option value="fr">FR</option>
+							<option value="ln">LN</option>
+							<option value="sw">SW</option>
+							<option value="en">EN</option>
+						</select>
+					</div>
+					<div class="cart-btn" onclick="toggleCart()">
+						<i class="fa-solid fa-bag-shopping"></i>
+						<span id="cart-count">0</span>
+					</div>
+				</div>
+			</div>
+		</nav>
 
-    <header class="hero-minimal">
-        <div class="hero-text">
-            <h1 id="hero-title">Inspiré par Kinshasa.</h1>
-            <p id="hero-subtitle">Le premier shop qui parle votre langue et comprend votre style.</p>
-        </div>
-    </header>
+		<header class="hero-minimal">
+			<div class="hero-text">
+				<h1 id="h-title">Inspiré par Kinshasa.</h1>
+				<p id="h-sub">Le shop qui parle votre langue et comprend votre style.</p>
+			</div>
+		</header>
 
-    <div class="cat-scroller" id="category-list"></div>
+		<div class="cat-scroller" id="category-list"></div>
 
-    <main>
-        <div class="grid-container" id="product-grid"></div>
-    </main>
+		<main>
+			<div class="grid-container" id="product-grid"></div>
+		</main>
 
-    <div id="cart-sidebar" class="sidebar">
-        <div class="sidebar-header">
-            <h3>Votre Sélection</h3>
-            <button onclick="toggleCart()" class="close-btn">&times;</button>
-        </div>
-        <div id="cart-items" class="cart-body"></div>
-        <div class="sidebar-footer">
-            <div class="total-row"><span>Total</span><span id="cart-total">0</span> $</div>
-            <button class="pay-btn">Commander sur WhatsApp <i class="fab fa-whatsapp"></i></button>
-        </div>
-    </div>
+		<div id="cart-sidebar" class="sidebar">
+			<div class="sidebar-header">
+				<h3 id="cart-title">Votre Panier</h3>
+				<button onclick="toggleCart()" class="close-btn">&times;</button>
+			</div>
+			<div id="cart-items" class="cart-body"></div>
+			<div class="sidebar-footer">
+				<div class="total-row"><span id="total-label">Total</span><span id="cart-total">0</span> $</div>
+				<button class="pay-btn" id="wa-btn" onclick="checkoutWhatsApp()">Commander sur WhatsApp <i class="fab fa-whatsapp"></i></button>
+			</div>
+		</div>
 
-    <script src="app.js"></script>
-</body>
+		<footer class="main-footer">
+			<div class="footer-content">
+				<div class="footer-brand">
+					<div class="logo">KINU<span>.</span></div>
+					<p id="footer-desc">L'excellence du commerce connecté à Kinshasa.</p>
+					<div class="social-links">
+						<a href="#"><i class="fab fa-instagram"></i></a>
+						<a href="#"><i class="fab fa-tiktok"></i></a>
+						<a href="#"><i class="fab fa-whatsapp"></i></a>
+					</div>
+				</div>
+				<div class="footer-links">
+					<h4 id="footer-help-title">Aide</h4>
+					<ul>
+						<li id="f-link-1">Livraison à Kinshasa</li>
+						<li id="f-link-2">Retours produits</li>
+					</ul>
+				</div>
+				<div class="footer-payments">
+					<h4 id="footer-pay-title">Paiement</h4>
+					<div class="pay-icons">
+						<div class="pay-method">M-Pesa</div>
+						<div class="pay-method">Orange</div>
+						<div class="pay-method">Airtel</div>
+						<div class="pay-method">Cash</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>&copy; 2025 Kinu Startup RDC. Made in Kinshasa.</p>
+			</div>
+		</footer>
+
+		<script src="app.js"></script>
+	</body>
 </html>
