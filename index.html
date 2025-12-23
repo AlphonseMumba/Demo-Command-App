@@ -1,306 +1,44 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SwiftShop - Votre marché en ligne en RDC. Nourriture, vêtements, électronique et plus encore.">
-    <meta name="theme-color" content="#E85D04">
-    <title>SwiftShop - Votre Marché en Ligne</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Kinu Shop | Boutique Locale</title>
+		<link rel="stylesheet" href="styles.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+	</head>
+	<body>
+		<header>
+			<nav class="navbar">
+				<div class="logo">KINU<span>SHOP</span></div>
+				<div class="nav-controls">
+					<select id="lang-select" onchange="changeLanguage()">
+						<option value="fr">Français</option>
+						<option value="ln">Lingala</option>
+						<option value="sw">Swahili</option>
+						<option value="en">English</option>
+					</select>
+					<div class="cart-icon">
+						<i class="fas fa-shopping-basket"></i>
+						<span id="cart-count">0</span>
+					</div>
+				</div>
+			</nav>
+			<section class="hero">
+				<h1 id="hero-title">La qualité, chez vous.</h1>
+				<p id="hero-subtitle">Produits locaux et importés livrés partout à Kinshasa.</p>
+			</section>
+		</header>
 
-</head>
-<body>
-    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+		<main>
+			<h2 id="category-title">Nos Produits</h2>
+			<div class="product-grid" id="product-container"></div>
+		</main>
 
-    <header class="header" role="banner">
-        <div class="header__top">
-            <div class="header__top-info">
-                <span>🇨🇩 Livraison rapide à Kinshasa et dans toute la RDC</span>
-            </div>
-            <div class="header__top-links">
-                <a href="tel:+243842315918" class="header__top-link">
-                    <i class="fas fa-phone" aria-hidden="true"></i>
-                    <span>+243 842 315 918</span>
-                </a>
-                <a href="mailto:mumbalpha@gmail.com" class="header__top-link">
-                    <i class="fas fa-envelope" aria-hidden="true"></i>
-                    <span>info@SwiftShop.com</span>
-                </a>
-            </div>
-        </div>
-        <div class="header__main">
-            <a href="#" class="logo" aria-label="SwiftShop - Accueil">
-                <div class="logo__icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
-                <div class="logo__text">Swift<span class="logo__text--accent">Shop</span></div>
-            </a>
-            <div class="search" role="search">
-                <label for="searchInput" class="visually-hidden">Rechercher des produits</label>
-                <input
-                    type="search"
-                    id="searchInput"
-                    class="search__input"
-                    placeholder="Rechercher produits, marques..."
-                    aria-label="Rechercher des produits"
-                    autocomplete="off"
-                >
-                <button class="search__button" onclick="handleSearch()" aria-label="Lancer la recherche">
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                </button>
-            </div>
-            <div class="header__actions">
-                <button class="currency-toggle" onclick="toggleCurrency()" aria-label="Changer de devise">
-                    <span class="currency-toggle__flag" id="currencyFlag">🇨🇩</span>
-                    <span id="currencyLabel">CDF</span>
-                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                </button>
-                <button class="icon-button" onclick="toggleCart()" aria-label="Ouvrir le panier">
-                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-                    <span class="icon-button__badge" id="cartCount" aria-label="0 articles">0</span>
-                </button>
-            </div>
-        </div>
-    </header>
+		<footer>
+			<p>&copy; 2024 Kinu Shop - Made in Kinshasa</p>
+		</footer>
 
-    <nav class="nav" role="navigation" aria-label="Catégories de produits">
-        <div class="nav__container">
-            <a href="#" class="nav__item nav__item--active" data-category="all" aria-current="page">
-                <i class="fas fa-th-large nav__item-icon" aria-hidden="true"></i>
-                <span>Tous</span>
-            </a>
-            <a href="#" class="nav__item" data-category="food" aria-current="false">
-                <i class="fas fa-utensils nav__item-icon" aria-hidden="true"></i>
-                <span>Nourriture</span>
-            </a>
-            <a href="#" class="nav__item" data-category="clothing" aria-current="false">
-                <i class="fas fa-tshirt nav__item-icon" aria-hidden="true"></i>
-                <span>Vêtements</span>
-            </a>
-            <a href="#" class="nav__item" data-category="electronics" aria-current="false">
-                <i class="fas fa-laptop nav__item-icon" aria-hidden="true"></i>
-                <span>Électronique</span>
-            </a>
-            <a href="#" class="nav__item" data-category="home" aria-current="false">
-                <i class="fas fa-couch nav__item-icon" aria-hidden="true"></i>
-                <span>Maison</span>
-            </a>
-            <a href="#" class="nav__item" data-category="beauty" aria-current="false">
-                <i class="fas fa-spa nav__item-icon" aria-hidden="true"></i>
-                <span>Beauté</span>
-            </a>
-        </div>
-    </nav>
-
-    <section class="hero" aria-labelledby="hero-title">
-        <div class="hero__content">
-            <h1 class="hero__title" id="hero-title">Bienvenue chez SwiftShop</h1>
-            <p class="hero__subtitle">Le plus grand marché en ligne de la RDC - Nourriture, Mode, Tech et plus encore!</p>
-            <div class="hero__stats" role="list" aria-label="Statistiques">
-                <div class="stat" role="listitem">
-                    <span class="stat__number">5000+</span>
-                    <span class="stat__label">Produits</span>
-                </div>
-                <div class="stat" role="listitem">
-                    <span class="stat__number">50K+</span>
-                    <span class="stat__label">Clients</span>
-                </div>
-                <div class="stat" role="listitem">
-                    <span class="stat__number">24/7</span>
-                    <span class="stat__label">Support</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <main class="main" id="main-content" role="main">
-        <div class="section-header">
-            <h2 class="section-header__title">
-                <i class="fas fa-fire section-header__icon" aria-hidden="true"></i>
-                Produits Populaires
-            </h2>
-            <a href="#" class="section-header__link">
-                Voir tout <i class="fas fa-arrow-right" aria-hidden="true"></i>
-            </a>
-        </div>
-        <div class="products-grid" id="productsGrid" role="list" aria-label="Liste des produits">
-            <!-- Products loaded by JavaScript -->
-        </div>
-    </main>
-
-    <!-- Cart Overlay -->
-    <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
-
-    <!-- Cart Sidebar -->
-    <aside class="cart-sidebar" id="cartSidebar" role="dialog" aria-label="Panier" aria-modal="true">
-        <div class="cart-sidebar__header">
-            <h2 class="cart-sidebar__title">
-                <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-                Mon Panier
-            </h2>
-            <button class="cart-sidebar__close" onclick="toggleCart()" aria-label="Fermer le panier">
-                <i class="fas fa-times" aria-hidden="true"></i>
-            </button>
-        </div>
-        <div class="cart-sidebar__items" id="cartItems">
-            <div class="cart-empty">
-                <i class="fas fa-shopping-basket cart-empty__icon" aria-hidden="true"></i>
-                <h3 class="cart-empty__title">Votre panier est vide</h3>
-                <p class="cart-empty__text">Ajoutez des produits pour commencer</p>
-            </div>
-        </div>
-        <div class="cart-sidebar__footer" id="cartFooter" style="display: none;">
-            <div class="cart-summary">
-                <div class="cart-summary__row">
-                    <span>Sous-total</span>
-                    <span id="cartSubtotal">0 FC</span>
-                </div>
-                <div class="cart-summary__row">
-                    <span>Livraison</span>
-                    <span id="cartShipping">5 000 FC</span>
-                </div>
-                <div class="cart-summary__row cart-summary__row--total">
-                    <span>Total</span>
-                    <span id="cartTotal">0 FC</span>
-                </div>
-            </div>
-            <button class="cart-sidebar__checkout" onclick="showCheckoutModal()">
-                <i class="fas fa-credit-card" aria-hidden="true"></i>
-                Passer la commande
-            </button>
-        </div>
-    </aside>
-
-    <!-- Checkout Modal -->
-    <div class="modal-overlay" id="checkoutModal" role="dialog" aria-labelledby="checkout-title" aria-modal="true">
-        <div class="modal">
-            <div class="modal__header">
-                <i class="fas fa-truck modal__header-icon" aria-hidden="true"></i>
-                <h2 class="modal__header-title" id="checkout-title">Finaliser la Commande</h2>
-            </div>
-            <div class="modal__body">
-                <div class="form-group">
-                    <label class="form-group__label" for="customerName">Nom complet *</label>
-                    <input type="text" id="customerName" class="form-group__input" placeholder="Ex: Jean Mukendi" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-group__label" for="customerPhone">Téléphone *</label>
-                    <input type="tel" id="customerPhone" class="form-group__input" placeholder="Ex: +243 842 315 918" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-group__label" for="customerAddress">Adresse de livraison *</label>
-                    <textarea id="customerAddress" class="form-group__textarea" rows="2" placeholder="Ex: 123 Avenue Kasavubu, Gombe, Kinshasa" required></textarea>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-group__label" for="customerCommune">Commune</label>
-                        <select id="customerCommune" class="form-group__select">
-                            <option value="">Sélectionner</option>
-                            <option value="gombe">Gombe</option>
-                            <option value="lingwala">Lingwala</option>
-                            <option value="barumbu">Barumbu</option>
-                            <option value="kinshasa">Kinshasa</option>
-                            <option value="kintambo">Kintambo</option>
-                            <option value="ngaliema">Ngaliema</option>
-                            <option value="bandalungwa">Bandalungwa</option>
-                            <option value="lemba">Lemba</option>
-                            <option value="limete">Limete</option>
-                            <option value="matete">Matete</option>
-                            <option value="ngiri-ngiri">Ngiri-Ngiri</option>
-                            <option value="selembao">Selembao</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-group__label" for="paymentMethod">Mode de paiement</label>
-                        <select id="paymentMethod" class="form-group__select">
-                            <option value="cash">Cash à la livraison</option>
-                            <option value="mobile">Mobile Money</option>
-                            <option value="card">Carte bancaire</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="modal__actions">
-                <button class="button button--secondary" onclick="closeCheckoutModal()">
-                    <i class="fas fa-times" aria-hidden="true"></i> Annuler
-                </button>
-                <button class="button button--primary" onclick="confirmOrder()">
-                    <i class="fas fa-check" aria-hidden="true"></i> Confirmer
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Success Modal -->
-    <div class="modal-overlay" id="successModal" role="dialog" aria-labelledby="success-title" aria-modal="true">
-        <div class="modal">
-            <div class="success-modal">
-                <i class="fas fa-check-circle success-modal__icon" aria-hidden="true"></i>
-                <h2 class="success-modal__title" id="success-title">Commande Confirmée!</h2>
-                <p class="success-modal__text">Merci pour votre achat chez SwiftShop</p>
-                <div class="success-modal__order-number">N° <span id="orderNumber"></span></div>
-                <p class="success-modal__text">Vous recevrez un SMS de confirmation sous peu.</p>
-                <button class="button button--primary" onclick="closeSuccessModal()" style="margin-top: 20px; width: 100%;">
-                    <i class="fas fa-home" aria-hidden="true"></i> Retour à l'accueil
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Toast Container -->
-    <div class="toast-container" id="toastContainer" role="status" aria-live="polite"></div>
-
-    <!-- Footer -->
-    <footer class="footer" role="contentinfo">
-        <div class="footer__content">
-            <div class="footer__section">
-                <h3 class="footer__section-title">À Propos de SwiftShop</h3>
-                <p class="footer__text">SwiftShop est la première plateforme e-commerce de la RDC, offrant une large gamme de produits de qualité livrés directement chez vous.</p>
-                <div class="social-links">
-                    <a href="#" class="social-links__item" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-                    <a href="#" class="social-links__item" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                    <a href="#" class="social-links__item" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                    <a href="#" class="social-links__item" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-                </div>
-            </div>
-            <div class="footer__section">
-                <h3 class="footer__section-title">Liens Utiles</h3>
-                <ul class="footer__links">
-                    <li class="footer__link-item"><a href="#" class="footer__link">Mon compte</a></li>
-                    <li class="footer__link-item"><a href="#" class="footer__link">Mes commandes</a></li>
-                    <li class="footer__link-item"><a href="#" class="footer__link">Liste de souhaits</a></li>
-                    <li class="footer__link-item"><a href="#" class="footer__link">Support client</a></li>
-                </ul>
-            </div>
-            <div class="footer__section">
-                <h3 class="footer__section-title">Catégories</h3>
-                <ul class="footer__links">
-                    <li class="footer__link-item"><a href="#" class="footer__link">Nourriture & Boissons</a></li>
-                    <li class="footer__link-item"><a href="#" class="footer__link">Mode & Vêtements</a></li>
-                    <li class="footer__link-item"><a href="#" class="footer__link">Électronique</a></li>
-                    <li class="footer__link-item"><a href="#" class="footer__link">Maison & Déco</a></li>
-                </ul>
-            </div>
-            <div class="footer__section">
-                <h3 class="footer__section-title">Contact</h3>
-                <ul class="footer__links">
-                    <li class="footer__link-item"><span class="footer__link"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Kinshasa, RDC</span></li>
-                    <li class="footer__link-item"><a href="tel:+243842315918" class="footer__link"><i class="fas fa-phone" aria-hidden="true"></i> +243 842 315 918</a></li>
-                    <li class="footer__link-item"><a href="mailto:mumbalpha@gmail.com" class="footer__link"><i class="fas fa-envelope" aria-hidden="true"></i> info@SwiftShop.com</a></li>
-                    <li class="footer__link-item"><span class="footer__link"><i class="fas fa-clock" aria-hidden="true"></i> Lun-Sam: 8h-20h</span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer__bottom">
-            <p>© 2025 SwiftShop. Tous droits réservés. Made with ❤️ in Kinshasa</p>
-        </div>
-    </footer>
-
-    <!-- ARIA Live Region -->
-    <div id="ariaAnnouncer" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
-
-    <script src="app.js"></script>
-</body>
+		<script src="app.js"></script>
+	</body>
 </html>
-
