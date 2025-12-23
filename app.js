@@ -1,101 +1,146 @@
-// 1. Constantes des produits
 const PRODUCTS = [
 	{
 		id: 1,
-		name: { fr: 'Café du Kivu', ln: 'Kawa ya Kivu', sw: 'Kahawa ya Kivu', en: 'Kivu Coffee' },
-		price: 15,
-		image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=400',
+		cat: 'mode',
+		name: { fr: 'Sneaker Kin-Vibe', ln: 'Sapatu ya sika' },
+		price: 75,
+		images: [
+			'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600',
+			'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600',
+			'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600',
+		],
 	},
 	{
 		id: 2,
-		name: { fr: 'Panier de Fruits', ln: 'Ebonza ya mbuma', sw: 'Kikapu cha matunda', en: 'Fruit Basket' },
-		price: 25,
-		image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=400',
+		cat: 'tech',
+		name: { fr: 'Casque Kinu Audio', ln: 'Casque ya makasi' },
+		price: 120,
+		images: [
+			'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600',
+			'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=600',
+			'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=600',
+		],
 	},
 	{
 		id: 3,
-		name: { fr: 'Huile de Palme', ln: 'Mafuta ya mbila', sw: 'Mafuta ya nazi', en: 'Palm Oil' },
-		price: 10,
-		image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=400',
+		cat: 'food',
+		name: { fr: "Café de l'Est (Pack)", ln: 'Kawa kitoko' },
+		price: 25,
+		images: [
+			'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600',
+			'https://images.unsplash.com/photo-1580915411954-282cb1b0d780?w=600',
+			'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600',
+		],
 	},
-	{
-		id: 4,
-		name: { fr: 'Sac en Pagne', ln: 'Saki ya Liputa', sw: 'Mfuko wa Kitenge', en: 'Pagne Bag' },
-		price: 45,
-		image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=400',
-	},
+	// Ajoutez plus de produits ici selon le même schéma
 ];
 
-// 2. Traductions UI
-const TRANSLATIONS = {
-	fr: {
-		heroTitle: 'La qualité, chez vous.',
-		heroSub: 'Produits locaux et importés livrés partout à Kinshasa.',
-		catTitle: 'Nos Produits',
-		addBtn: 'Ajouter au panier',
-	},
-	ln: {
-		heroTitle: 'Kitoko, na ndako na yo.',
-		heroSub: 'Biloko ya mboka mpe ya bapaya, tokoyela bino yango na Kin.',
-		catTitle: 'Biloko na biso',
-		addBtn: 'Bakisa na saki',
-	},
-	sw: {
-		heroTitle: 'Ubora, nyumbani kwako.',
-		heroSub: 'Bidhaa za ndani na nje zinazoletwa kila mahali Kinshasa.',
-		catTitle: 'Bidhaa zetu',
-		addBtn: 'Weka kwa kikapu',
-	},
-	en: {
-		heroTitle: 'Quality, at your doorstep.',
-		heroSub: 'Local and imported products delivered across Kinshasa.',
-		catTitle: 'Our Products',
-		addBtn: 'Add to cart',
-	},
-};
+const CATEGORIES = [
+	{ id: 'all', fr: 'Tout' },
+	{ id: 'mode', fr: 'Mode' },
+	{ id: 'tech', fr: 'Tech' },
+	{ id: 'food', fr: 'Alimentaire' },
+];
 
+let cart = [];
 let currentLang = 'fr';
-let cartCount = 0;
+let currentCat = 'all';
 
-// 3. Fonctions d'affichage
-function renderProducts() {
-	const container = document.getElementById('product-container');
-	container.innerHTML = '';
-
-	PRODUCTS.forEach((product) => {
-		const card = document.createElement('div');
-		card.className = 'product-card';
-		card.innerHTML = `
-            <img src="${product.image}" alt="${product.name[currentLang]}" class="product-img">
-            <div class="product-info">
-                <h3>${product.name[currentLang]}</h3>
-                <p class="price">$${product.price}</p>
-                <button class="add-btn" onclick="addToCart()">
-                    ${TRANSLATIONS[currentLang].addBtn}
-                </button>
-            </div>
-        `;
-		container.appendChild(card);
-	});
-}
-
-function changeLanguage() {
+function updateUI() {
 	currentLang = document.getElementById('lang-select').value;
-
-	// Mise à jour des textes statiques
-	document.getElementById('hero-title').innerText = TRANSLATIONS[currentLang].heroTitle;
-	document.getElementById('hero-subtitle').innerText = TRANSLATIONS[currentLang].heroSub;
-	document.getElementById('category-title').innerText = TRANSLATIONS[currentLang].catTitle;
-
-	// Re-rendre les produits
+	renderCategories();
 	renderProducts();
 }
 
-function addToCart() {
-	cartCount++;
-	document.getElementById('cart-count').innerText = cartCount;
-	alert(currentLang === 'fr' ? 'Ajouté au panier !' : 'Ebakisami na saki !');
+function renderCategories() {
+	const container = document.getElementById('category-list');
+	container.innerHTML = CATEGORIES.map(
+		(c) => `
+        <div class="cat-item ${currentCat === c.id ? 'active' : ''}" onclick="filterCat('${c.id}')">
+            ${c[currentLang] || c.fr}
+        </div>
+    `
+	).join('');
 }
 
-// Initialisation
-window.onload = renderProducts;
+function filterCat(id) {
+	currentCat = id;
+	renderCategories();
+	renderProducts();
+}
+
+function renderProducts() {
+	const grid = document.getElementById('product-grid');
+	const filtered = currentCat === 'all' ? PRODUCTS : PRODUCTS.filter((p) => p.cat === currentCat);
+
+	grid.innerHTML = filtered
+		.map(
+			(p) => `
+        <div class="product-card">
+            <div class="gallery-container" onmousemove="handleGallery(event, this)">
+                <div class="gallery-track">
+                    ${p.images.map((img) => `<img src="${img}" alt="">`).join('')}
+                </div>
+                <div class="gallery-dots">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3>${p.name[currentLang] || p.name.fr}</h3>
+                <div class="price-row">
+                    <span class="price">${p.price} $</span>
+                    <button class="add-bag" onclick="addToCart(${p.id})">Ajouter</button>
+                </div>
+            </div>
+        </div>
+    `
+		)
+		.join('');
+}
+
+// Logique de galerie au survol (Amazon Style)
+function handleGallery(e, container) {
+	const rect = container.getBoundingClientRect();
+	const x = e.clientX - rect.left;
+	const width = rect.width;
+	const track = container.querySelector('.gallery-track');
+	const dots = container.querySelectorAll('.dot');
+
+	let index = 0;
+	if (x > width / 3) index = 1;
+	if (x > (2 * width) / 3) index = 2;
+
+	track.style.transform = `translateX(-${index * 33.333}%)`;
+	dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+}
+
+function toggleCart() {
+	document.getElementById('cart-sidebar').classList.toggle('active');
+}
+
+function addToCart(id) {
+	const product = PRODUCTS.find((p) => p.id === id);
+	cart.push(product);
+	document.getElementById('cart-count').innerText = cart.length;
+	updateCartList();
+}
+
+function updateCartList() {
+	const list = document.getElementById('cart-items');
+	const total = cart.reduce((s, p) => s + p.price, 0);
+	list.innerHTML = cart
+		.map(
+			(p) => `
+        <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+            <span>${p.name[currentLang]}</span>
+            <b>${p.price} $</b>
+        </div>
+    `
+		)
+		.join('');
+	document.getElementById('cart-total').innerText = total;
+}
+
+window.onload = updateUI;

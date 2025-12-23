@@ -1,44 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Kinu Shop | Boutique Locale</title>
-		<link rel="stylesheet" href="styles.css" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-	</head>
-	<body>
-		<header>
-			<nav class="navbar">
-				<div class="logo">KINU<span>SHOP</span></div>
-				<div class="nav-controls">
-					<select id="lang-select" onchange="changeLanguage()">
-						<option value="fr">Français</option>
-						<option value="ln">Lingala</option>
-						<option value="sw">Swahili</option>
-						<option value="en">English</option>
-					</select>
-					<div class="cart-icon">
-						<i class="fas fa-shopping-basket"></i>
-						<span id="cart-count">0</span>
-					</div>
-				</div>
-			</nav>
-			<section class="hero">
-				<h1 id="hero-title">La qualité, chez vous.</h1>
-				<p id="hero-subtitle">Produits locaux et importés livrés partout à Kinshasa.</p>
-			</section>
-		</header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINU | L'Élégance Kinoise</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="glass-nav">
+        <div class="nav-content">
+            <div class="logo">KINU<span>.</span></div>
+            <div class="nav-actions">
+                <div class="lang-pill">
+                    <select id="lang-select" onchange="updateUI()">
+                        <option value="fr">FR</option>
+                        <option value="ln">LN</option>
+                        <option value="sw">SW</option>
+                    </select>
+                </div>
+                <div class="cart-btn" onclick="toggleCart()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-		<main>
-			<h2 id="category-title">Nos Produits</h2>
-			<div class="product-grid" id="product-container"></div>
-		</main>
+    <header class="hero-minimal">
+        <div class="hero-text">
+            <h1 id="hero-title">Inspiré par Kinshasa.</h1>
+            <p id="hero-subtitle">Le premier shop qui parle votre langue et comprend votre style.</p>
+        </div>
+    </header>
 
-		<footer>
-			<p>&copy; 2024 Kinu Shop - Made in Kinshasa</p>
-		</footer>
+    <div class="cat-scroller" id="category-list"></div>
 
-		<script src="app.js"></script>
-	</body>
+    <main>
+        <div class="grid-container" id="product-grid"></div>
+    </main>
+
+    <div id="cart-sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h3>Votre Sélection</h3>
+            <button onclick="toggleCart()" class="close-btn">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-body"></div>
+        <div class="sidebar-footer">
+            <div class="total-row"><span>Total</span><span id="cart-total">0</span> $</div>
+            <button class="pay-btn">Commander sur WhatsApp <i class="fab fa-whatsapp"></i></button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
 </html>
