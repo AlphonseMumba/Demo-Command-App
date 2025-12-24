@@ -6,11 +6,7 @@ const PRODUCTS = [
 		cat: 'tech',
 		price: 1150,
 		name: { fr: 'iPhone 15 Pro Max', ln: 'iPhone ya sika mpenza', sw: 'iPhone mpya kabisa', en: 'iPhone 15 Pro Max' },
-		images: [
-			'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1678652197831-2d180705cd2c?auto=format&fit=crop&w=600',
-		],
+		images: ['https://i.ibb.co/W43f6sxj/Iphone15.jpg', 'https://i.ibb.co/KjpBgJCk/img-1950.jpg', 'https://i.ibb.co/W43f6sxj/Iphone15.jpg'],
 	},
 	{
 		id: 2,
@@ -18,9 +14,9 @@ const PRODUCTS = [
 		price: 159,
 		name: { fr: 'AirPods Pro 2', ln: 'Ba écouteurs ya sika', sw: 'Vifaa vya masikio', en: 'AirPods Pro 2' },
 		images: [
-			'https://images.unsplash.com/photo-1588423770574-910ae27c85a5?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1603351154351-5e2d0600bb77?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1592921870789-04563d55041c?auto=format&fit=crop&w=600',
+			'https://i.ibb.co/RGyy7ZyG/apple-airpods-pro-2-670px.jpg',
+			'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=500',
+			'https://i.ibb.co/RGyy7ZyG/apple-airpods-pro-2-670px.jpg',
 		],
 	},
 	{
@@ -29,21 +25,18 @@ const PRODUCTS = [
 		price: 990,
 		name: { fr: 'MacBook Air M2', ln: 'Ordinateur ya moke', sw: 'Tarakilishi ndogo', en: 'MacBook Air M2' },
 		images: [
-			'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1629131726692-1accd0c53ce0?auto=format&fit=crop&w=600',
+			'https://images.unsplash.com/photo-1661961110218-35af7210f803?auto=format&fit=crop&w=500',
+			'https://i.ibb.co/B2XTKQHm/macbook.jpg',
+			'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=500',
 		],
 	},
+
 	{
 		id: 4,
 		cat: 'tech',
 		price: 410,
 		name: { fr: 'PlayStation 5 Slim', ln: 'PS5 ya lisano', sw: 'PS5 mpya', en: 'PS5 Slim' },
-		images: [
-			'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1607853202273-797f1c22a38e?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1591333139263-5821034e9a40?auto=format&fit=crop&w=600',
-		],
+		images: ['https://i.ibb.co/SX67R8Sp/play5.webp', 'https://i.ibb.co/1fTVc9RW/playstation-5-slim.jpg', 'https://i.ibb.co/cXcg8q3W/ps5.jpg'],
 	},
 	{
 		id: 5,
@@ -51,9 +44,9 @@ const PRODUCTS = [
 		price: 85,
 		name: { fr: 'Powerbank Anker 737', ln: 'Batterie ya kokitisa', sw: 'Betri ya akiba', en: 'Anker Powerbank' },
 		images: [
-			'https://images.unsplash.com/photo-1609591035230-84a81b7a99c1?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1609591035011-096bc75c879d?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1619131304595-241575806657?auto=format&fit=crop&w=600',
+			'https://i.ibb.co/tTS7dnWF/anker-powercore-portable-charger-1-2.jpg',
+			'https://i.ibb.co/Pzh2DB3s/grande-anker-737-power-bank.jpg',
+			'https://i.ibb.co/tTS7dnWF/anker-powercore-portable-charger-1-2.jpg',
 		],
 	},
 	{
@@ -62,9 +55,9 @@ const PRODUCTS = [
 		price: 249,
 		name: { fr: 'Apple Watch SE', ln: 'Montre ya mayele', sw: 'Saa ya kisasa', en: 'Apple Watch SE' },
 		images: [
-			'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1434493907317-a46b5bc78344?auto=format&fit=crop&w=600',
+			'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=500',
+			'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=500',
+			'https://i.ibb.co/Q7qSwZB8/applewatch.jpg',
 		],
 	},
 	{
@@ -72,23 +65,19 @@ const PRODUCTS = [
 		cat: 'tech',
 		price: 35,
 		name: { fr: 'JBL Go 3', ln: 'Radio ya moke', sw: 'Spika ya muziki', en: 'JBL Go 3' },
-		images: [
-			'https://images.unsplash.com/photo-1612441804231-77a32b21c526?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1589003077984-844134d68810?auto=format&fit=crop&w=600',
-		],
+		images: ['https://i.ibb.co/fYTyZ1N1/jbl-go-3-4.webp', 'https://i.ibb.co/WvKvhRTn/jbl.jpg', 'https://i.ibb.co/fYTyZ1N1/jbl-go-3-4.webp'],
 	},
 
-	// --- MODE (7 PRODUITS) ---
+	// --- MODE ---
 	{
 		id: 11,
 		cat: 'mode',
 		price: 110,
 		name: { fr: 'Nike Air Max 270', ln: 'Sapatu ya sika', sw: 'Viatu vya michezo', en: 'Nike Air Max' },
 		images: [
-			'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=600',
+			'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500',
+			'https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=500',
+			'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=500',
 		],
 	},
 	{
@@ -97,9 +86,9 @@ const PRODUCTS = [
 		price: 85,
 		name: { fr: 'Veste Kitenge Homme', ln: 'Kazaka ya liputa', sw: 'Koti la Kitenge', en: 'Kitenge Blazer' },
 		images: [
-			'https://images.unsplash.com/photo-1598033129183-c4f50c7176c8?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600',
+			'https://i.ibb.co/mrh2Rc0x/8de6fb1816fb530c6f7e78fcf2ec359d.jpg',
+			'https://i.ibb.co/ffvc1M5/55bbd75da9d1665953847f214aaa672d.jpg',
+			'https://i.ibb.co/XrtC9v94/Veste-de-costume-pour-homme-style-africain-imprim-Ankara-sur-mesure-pour-mariage-f-te-Design-jpg-640.webp',
 		],
 	},
 	{
@@ -108,9 +97,9 @@ const PRODUCTS = [
 		price: 45,
 		name: { fr: 'Sac à main Luxe', ln: 'Saki ya basi', sw: 'Mfuko wa ngozi', en: 'Leather Handbag' },
 		images: [
-			'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=600',
+			'https://i.ibb.co/ZpJg8WVY/nature-morte-du-sac-suspendu-52683-151481.jpg',
+			'https://i.ibb.co/Mk0b99Sj/sac-suspendu-meuble-interieur-23-2151073506.jpg',
+			'https://i.ibb.co/wNkfhJCx/sac-suspendu-meuble-interieur-23-2151073514.jpg',
 		],
 	},
 	{
@@ -119,9 +108,9 @@ const PRODUCTS = [
 		price: 135,
 		name: { fr: 'Montre Fossil Classic', ln: 'Montre ya wolo', sw: 'Saa ya mkono', en: 'Fossil Watch' },
 		images: [
-			'https://images.unsplash.com/photo-1524592091214-b44696899660?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1522312346375-d1ad5937951f?auto=format&fit=crop&w=600',
+			'https://i.ibb.co/pvcdx8mF/Watches-LP-carousel-Type-Mens-silver.jpg',
+			'https://i.ibb.co/hJmncwgs/Watches-LP-carousel-Style-Mens-auto.jpg',
+			'https://i.ibb.co/vxK0gRzF/Watches-LP-carousel-Style-Mens-classic.jpg',
 		],
 	},
 	{
@@ -130,9 +119,9 @@ const PRODUCTS = [
 		price: 155,
 		name: { fr: 'Ray-Ban Aviator', ln: 'Maneti ya moi', sw: 'Miwani ya jua', en: 'Ray-Ban Aviator' },
 		images: [
-			'https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1511499767390-91f99f73948c?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=600',
+			'https://i.ibb.co/FPWcp9C/ray-ban-aviator-large-metal-gold-rb3025-112-85-55-14-medium-gradient.png',
+			'https://i.ibb.co/gbRDZG2B/s-l400.jpg',
+			'https://i.ibb.co/GQq8V8Nd/Ray-Ban-Aviator.jpg',
 		],
 	},
 	{
@@ -141,9 +130,9 @@ const PRODUCTS = [
 		price: 25,
 		name: { fr: 'T-shirt Blanc Coton', ln: 'Mupira ya kitoko', sw: 'T-shati ya pamba', en: 'White Cotton T-shirt' },
 		images: [
-			'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600',
+			'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500',
+			'https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=500',
+			'https://images.unsplash.com/photo-1554568218-0f1715e72254?auto=format&fit=crop&w=500',
 		],
 	},
 	{
@@ -152,22 +141,22 @@ const PRODUCTS = [
 		price: 40,
 		name: { fr: 'Pantalon Cargo Olive', ln: 'Pantalo ya sika', sw: 'Suruali ya kisasa', en: 'Olive Cargo Pants' },
 		images: [
-			'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1565084888279-aff99696c242?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1517441662442-f8406595638c?auto=format&fit=crop&w=600',
+			'https://i.ibb.co/N6cDf8Cf/a8eb21ccf1c644ad8e02cdcf45b82d9e.jpg',
+			'https://i.ibb.co/LXZ2k69c/7eaefca7266a497baef1079c4b2a1aad.jpg',
+			'https://i.ibb.co/WNHbtCtG/50473fc644704d08bf445104258c1f64.jpg',
 		],
 	},
 
-	// --- ALIMENTAIRE (7 PRODUITS) ---
+	// --- ALIMENTAIRE (IMAGES DÉJÀ VALIDES) ---
 	{
 		id: 21,
 		cat: 'food',
 		price: 12,
 		name: { fr: 'Café du Kivu Grain', ln: 'Kawa ya Kivu', sw: 'Kahawa ya Kivu', en: 'Kivu Coffee' },
 		images: [
-			'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=600',
+			'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=500',
+			'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=500',
+			'https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=500',
 		],
 	},
 	{
@@ -175,21 +164,18 @@ const PRODUCTS = [
 		cat: 'food',
 		price: 18,
 		name: { fr: 'Miel Bio Pur', ln: 'Wiki ya sika', sw: 'Asali mbichi', en: 'Pure Organic Honey' },
-		images: [
-			'https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1471943311424-646960669fba?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1555529733-0e670560f7e1?auto=format&fit=crop&w=600',
-		],
+		images: ['https://i.ibb.co/R4H6ZDT7/organic-honey.jpg', 'https://i.ibb.co/3yGBf7Vj/miel-1L.jpg', 'https://i.ibb.co/ZRCx4Q9m/miel2-1.webp'],
 	},
+
 	{
 		id: 23,
 		cat: 'food',
 		price: 22,
 		name: { fr: 'Huile de Palme 5L', ln: 'Mafuta ya mbila', sw: 'Mafuta ya mawese', en: 'Palm Oil 5L' },
 		images: [
-			'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1615485290382-441e4d019cb0?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1590779033100-9f60705a2f3d?auto=format&fit=crop&w=600',
+			'https://i.ibb.co/1YJw2K2F/Huile-de-palme-e-Mart-cd-5-L.jpg',
+			'https://i.ibb.co/1YJw2K2F/Huile-de-palme-e-Mart-cd-5-L.jpg',
+			'https://i.ibb.co/1YJw2K2F/Huile-de-palme-e-Mart-cd-5-L.jpg',
 		],
 	},
 	{
@@ -198,9 +184,9 @@ const PRODUCTS = [
 		price: 8,
 		name: { fr: 'Chocolat Noir Lowa', ln: 'Chocolat ya mboka', sw: 'Chokoleti ya ndani', en: 'Lowa Dark Chocolate' },
 		images: [
-			'https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=600',
+			'https://i.ibb.co/hRj88PWR/ed959-lowa-chocolat-au-cafe-14.jpg',
+			'https://i.ibb.co/8LdfTZdH/Screen-Shot-2020-08-31-at-4-33-02-PM.webp',
+			'https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=500',
 		],
 	},
 	{
@@ -209,9 +195,9 @@ const PRODUCTS = [
 		price: 30,
 		name: { fr: 'Panier de Fruits Kin', ln: 'Ebonza ya mbuma', sw: 'Kikapu cha matunda', en: 'Kin Fruit Basket' },
 		images: [
-			'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1610832958506-ee5636637671?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1519996529931-28324d5a630e?auto=format&fit=crop&w=600',
+			'https://i.ibb.co/XZPrZnjP/raisins-alimentaires-blanc-kiwi-dessert-1172-541.jpg',
+			'https://i.ibb.co/XZ63wG25/fruits-frais-dans-panier-table-bois-73966-2482.jpg',
+			'https://i.ibb.co/wZmwt0jN/panier-fruit-2eme-600x600.webp',
 		],
 	},
 	{
@@ -220,9 +206,9 @@ const PRODUCTS = [
 		price: 6,
 		name: { fr: 'Thé Noir Bukavu', ln: 'Ti ya kitoko', sw: 'Chai ya Bukavu', en: 'Bukavu Black Tea' },
 		images: [
-			'https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1544782703-569b53382b3d?auto=format&fit=crop&w=600',
+			'https://i.ibb.co/fY4XtK9q/dried-black-tea-on-white-260nw-2307428109.jpg',
+			'https://i.ibb.co/8gXPKLPV/pngtree-red-tea-black-tea-tea-diet-png-image-3392967.jpg',
+			'https://i.ibb.co/fY4XtK9q/dried-black-tea-on-white-260nw-2307428109.jpg',
 		],
 	},
 	{
@@ -230,14 +216,9 @@ const PRODUCTS = [
 		cat: 'food',
 		price: 5,
 		name: { fr: 'Piment Pili-Pili', ln: 'Pilipili ya makasi', sw: 'Pilipili kali', en: 'Pili-Pili Hot Chili' },
-		images: [
-			'https://images.unsplash.com/photo-1590644365607-1c5a519a7a37?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1588252303782-cb80119abd6d?auto=format&fit=crop&w=600',
-			'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=600',
-		],
+		images: ['https://i.ibb.co/SDLGF6ZM/12167-2-9.jpg', 'https://i.ibb.co/zWfVw7h4/IMG-1248-530x414.jpg', 'https://i.ibb.co/rftQQdsm/produit5-6.webp'],
 	},
 ];
-
 const UI_TEXT = {
 	fr: {
 		h1: 'Inspiré par Kinshasa.',
