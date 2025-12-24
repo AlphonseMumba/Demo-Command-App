@@ -1,4 +1,3 @@
-// Base de données : 30 produits avec multi-vues
 const PRODUCTS = [
 	// --- TECH (7 PRODUITS) ---
 	{
@@ -281,11 +280,23 @@ const UI_TEXT = {
 let cart = [];
 let currentLang = 'fr';
 let currentCat = 'all';
+let currentCurrency = 'USD';
+const EXCHANGE_RATE = 2280; // 1 USD = 2280 FC
+
+// --- FONCTION DE FORMATAGE PRIX ---
+function formatPrice(usdAmount) {
+	if (currentCurrency === 'FC') {
+		const fcPrice = Math.ceil((usdAmount * EXCHANGE_RATE) / 100) * 100;
+		return new Intl.NumberFormat('fr-FR').format(fcPrice) + ' FC';
+	}
+	return usdAmount + ' $';
+}
 
 function updateUI() {
 	currentLang = document.getElementById('lang-select').value;
-	const txt = UI_TEXT[currentLang];
+	currentCurrency = document.getElementById('currency-select').value;
 
+	const txt = UI_TEXT[currentLang];
 	document.getElementById('h-title').innerText = txt.h1;
 	document.getElementById('h-sub').innerText = txt.sub;
 	document.getElementById('cart-title').innerText = txt.cart;
@@ -294,8 +305,12 @@ function updateUI() {
 	document.getElementById('footer-help-title').innerText = txt.fHelp;
 	document.getElementById('footer-pay-title').innerText = txt.fPay;
 
+	// Update symbol in sidebar
+	document.getElementById('cart-currency-symbol').innerText = currentCurrency === 'FC' ? 'FC' : '$';
+
 	renderCategories();
 	renderProducts();
+	updateCartList();
 }
 
 function renderCategories() {
@@ -325,7 +340,7 @@ function renderProducts() {
 		.map(
 			(p) => `
         <div class="product-card">
-            <div class="gallery-container" onmousemove="handleGallery(event, this)">
+            <div class="gallery-container" onmousemove="handleGallery(event, this)" ontouchmove="handleGallery(event, this)">
                 <div class="gallery-track">
                     ${p.images.map((img) => `<img src="${img}" loading="lazy">`).join('')}
                 </div>
@@ -334,7 +349,7 @@ function renderProducts() {
             <div class="product-info">
                 <h3>${p.name[currentLang]}</h3>
                 <div class="price-row">
-                    <span class="price">${p.price} $</span>
+                    <span class="price">${formatPrice(p.price)}</span>
                     <button class="add-bag" onclick="addToCart(${p.id})">${UI_TEXT[currentLang].buy}</button>
                 </div>
             </div>
@@ -365,22 +380,31 @@ function addToCart(id) {
 
 function updateCartList() {
 	const list = document.getElementById('cart-items');
-	const total = cart.reduce((s, p) => s + p.price, 0);
+	const totalUSD = cart.reduce((s, p) => s + p.price, 0);
+
 	list.innerHTML = cart
 		.map(
 			(p) => `
-        <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
-            <span>${p.name[currentLang]}</span><b>${p.price} $</b>
+        <div style="display:flex; justify-content:space-between; margin-bottom:15px; align-items:center;">
+            <span style="font-size:0.9rem">${p.name[currentLang]}</span>
+            <b>${formatPrice(p.price)}</b>
         </div>
     `
 		)
 		.join('');
-	document.getElementById('cart-total').innerText = total;
+
+	if (currentCurrency === 'FC') {
+		const totalFC = Math.ceil((totalUSD * EXCHANGE_RATE) / 100) * 100;
+		document.getElementById('cart-total').innerText = new Intl.NumberFormat('fr-FR').format(totalFC);
+	} else {
+		document.getElementById('cart-total').innerText = totalUSD;
+	}
 }
 
 function checkoutWhatsApp() {
-	const total = cart.reduce((s, p) => s + p.price, 0);
-	const message = `Bonjour Kinu Shop, je souhaite commander : ${cart.length} articles pour un total de ${total}$.`;
+	const totalUSD = cart.reduce((s, p) => s + p.price, 0);
+	const totalDisplay = formatPrice(totalUSD);
+	const message = `Bonjour Kinu Shop, je souhaite commander ${cart.length} articles pour un total de ${totalDisplay}.`;
 	window.open(`https://wa.me/243000000000?text=${encodeURIComponent(message)}`);
 }
 

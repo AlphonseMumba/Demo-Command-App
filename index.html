@@ -13,6 +13,12 @@
 			<div class="nav-content">
 				<div class="logo">KINU<span>.</span></div>
 				<div class="nav-actions">
+					<div class="currency-pill">
+						<select id="currency-select" onchange="updateUI()">
+							<option value="USD">$ USD</option>
+							<option value="FC">FC</option>
+						</select>
+					</div>
 					<div class="lang-pill">
 						<select id="lang-select" onchange="updateUI()">
 							<option value="fr">FR</option>
@@ -30,6 +36,7 @@
 		</nav>
 
 		<header class="hero-minimal">
+			<div class="hero-overlay"></div>
 			<div class="hero-text">
 				<h1 id="h-title">Inspiré par Kinshasa.</h1>
 				<p id="h-sub">Le shop qui parle votre langue et comprend votre style.</p>
@@ -49,7 +56,10 @@
 			</div>
 			<div id="cart-items" class="cart-body"></div>
 			<div class="sidebar-footer">
-				<div class="total-row"><span id="total-label">Total</span><span id="cart-total">0</span> $</div>
+				<div class="total-row">
+					<span id="total-label">Total</span>
+					<span id="cart-total-container"> <span id="cart-total">0</span> <span id="cart-currency-symbol">$</span> </span>
+				</div>
 				<button class="pay-btn" id="wa-btn" onclick="checkoutWhatsApp()">Commander sur WhatsApp <i class="fab fa-whatsapp"></i></button>
 			</div>
 		</div>
@@ -59,31 +69,29 @@
 				<div class="footer-brand">
 					<div class="logo">KINU<span>.</span></div>
 					<p id="footer-desc">L'excellence du commerce connecté à Kinshasa.</p>
-					<div class="social-links">
-						<a href="#"><i class="fab fa-instagram"></i></a>
-						<a href="#"><i class="fab fa-tiktok"></i></a>
-						<a href="#"><i class="fab fa-whatsapp"></i></a>
+				</div>
+				<div class="footer-links-grid">
+					<div class="footer-col">
+						<h4 id="footer-help-title">Aide</h4>
+						<a href="#" id="f-link-1">Livraison</a>
+						<a href="#" id="f-link-2">Retours</a>
 					</div>
-				</div>
-				<div class="footer-links">
-					<h4 id="footer-help-title">Aide</h4>
-					<ul>
-						<li id="f-link-1">Livraison à Kinshasa</li>
-						<li id="f-link-2">Retours produits</li>
-					</ul>
-				</div>
-				<div class="footer-payments">
-					<h4 id="footer-pay-title">Paiement</h4>
-					<div class="pay-icons">
-						<div class="pay-method">M-Pesa</div>
-						<div class="pay-method">Orange</div>
-						<div class="pay-method">Airtel</div>
-						<div class="pay-method">Cash</div>
+					<div class="footer-col">
+						<h4>Réseaux</h4>
+						<div class="social-icons">
+							<a href="#"><i class="fab fa-instagram"></i></a>
+							<a href="#"><i class="fab fa-tiktok"></i></a>
+							<a href="#"><i class="fab fa-whatsapp"></i></a>
+						</div>
+					</div>
+					<div class="footer-col">
+						<h4 id="footer-pay-title">Paiement</h4>
+						<p class="pay-list">M-Pesa, Orange, Airtel, Cash</p>
 					</div>
 				</div>
 			</div>
 			<div class="footer-bottom">
-				<p>&copy; 2025 Kinu Startup RDC. Made in Kinshasa.</p>
+				<p>&copy; 2025 Kinu Startup RDC. Made with ❤️ in Kinshasa.</p>
 			</div>
 		</footer>
 
