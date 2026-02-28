@@ -1,0 +1,45 @@
+<div class="flex min-h-screen">
+    <nav class="w-64 bg-white p-8 border-r">
+        <h1 class="text-xl font-black text-red-600 mb-12 italic underline">GullyAdmin</h1>
+        <ul class="space-y-6">
+            <li class="font-bold cursor-pointer text-red-600">Dashboard</li>
+            <li class="font-bold cursor-pointer text-gray-400">Commandes</li>
+            <li class="font-bold cursor-pointer text-gray-400">Paramètres</li>
+        </ul>
+    </nav>
+    <main class="flex-1 p-12 bg-gray-50">
+        <div class="grid grid-cols-3 gap-8 mb-12">
+            <div class="bg-white p-8 rounded-gully shadow-sm">
+                <p class="text-gray-400 font-bold text-sm uppercase">Revenu du jour</p>
+                <h2 class="text-4xl font-black mt-2 text-green-600">850.000 <span class="text-lg">CDF</span></h2>
+            </div>
+            <div class="bg-white p-8 rounded-gully shadow-sm">
+                <p class="text-gray-400 font-bold text-sm uppercase">Livraisons</p>
+                <h2 class="text-4xl font-black mt-2">42</h2>
+            </div>
+        </div>
+        
+        <div class="bg-white p-8 rounded-gully shadow-sm">
+            <h3 class="font-black text-xl mb-6">Commandes en cours</h3>
+            <table class="w-full text-left">
+                <thead>
+                    <tr class="text-gray-400 text-sm">
+                        <th class="pb-4">ID</th>
+                        <th class="pb-4">Client</th>
+                        <th class="pb-4">Status</th>
+                        <th class="pb-4 text-right">Montant</th>
+                    </tr>
+                </thead>
+                <tbody class="font-bold">
+                    <tr class="border-t">
+                        <td class="py-4">#GD-102</td>
+                        <td class="py-4">Jean de Gombe</td>
+                        <td class="py-4"><span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-xs">En cuisine</span></td>
+                        <td class="py-4 text-right">25.000 CDF</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+<script src="script.js"></script>
