@@ -3,41 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GullyDelivery Kinshasa</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <title>GullyDelivery - Livraison Rapide à Kinshasa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="p-6 flex justify-between items-center bg-white shadow-sm">
-        <h1 class="text-2xl font-black text-red-600 italic">GullyDelivery</h1>
-        <div class="flex items-center gap-6">
-            <span class="text-sm font-bold text-gray-500"><i class="fas fa-map-marker-alt"></i> Kinshasa, Gombe</span>
-            <a href="login.html" class="btn-primary px-8 py-2 rounded-full font-bold">Connexion</a>
-        </div>
-    </nav>
-
-    <section class="p-12 grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-            <h2 class="text-7xl font-extrabold leading-tight">Tes restos préférés <br>à <span class="text-red-600">Kinshasa</span>.</h2>
-            <div class="mt-10 flex bg-white rounded-full p-2 shadow-gully max-w-lg border">
-                <input type="text" placeholder="Qu'est-ce qu'on mange ?" class="flex-1 px-6 outline-none rounded-full">
-                <button class="btn-primary px-10 py-4 rounded-full font-bold">Chercher</button>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-logo">
+                <div class="logo">
+                    <span class="logo-icon">📍</span>
+                    <span class="logo-text">Gully<span class="logo-accent">Delivery</span></span>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link">Restaurants</a>
+                <a href="#" class="nav-link">Offres</a>
+                <a href="#" class="nav-link">Commandes</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="location">
+                    <span class="location-icon">📍</span>
+                    <span>Kinshasa, Gombe</span>
+                </div>
+                <button class="login-btn">Connexion</button>
+                <div class="cart">🛒</div>
             </div>
         </div>
-        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800" class="rounded-gully-lg shadow-2xl">
-    </section>
+    </header>
 
-    <section class="p-12">
-        <h3 class="text-2xl font-black mb-8">Populaire à proximité</h3>
-        <div class="grid md:grid-cols-3 gap-8">
-            <a href="restaurant.html" class="bg-white rounded-gully overflow-hidden shadow-gully block">
-                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500" class="h-48 w-full object-cover">
-                <div class="p-6">
-                    <h4 class="font-bold text-xl">Pizza Hut Gombe</h4>
-                    <p class="text-gray-400 text-sm">20-30 min • 5.000 CDF Livraison</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="new-tag">🆕 NOUVEAUX RESTAURANTS AJOUTÉS</div>
+                    <h1>Une envie? Nous allons la <span class="accent-text">livrer</span> rapidement.</h1>
+                    <p>Commandez dans les meilleurs restaurants de votre quartier. Nourriture fraîche livrée directement à votre porte en quelques minutes.</p>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Que souhaitez-vous commander aujourd'hui?">
+                        <button class="search-btn">Explorer Maintenant</button>
+                    </div>
                 </div>
-            </a>
+                <div class="hero-image">
+                    <div class="hero-visual">
+                        <div class="food-image">🍕</div>
+                        <div class="tracking-notification">
+                            <div class="tracking-icon">✅</div>
+                            <div class="tracking-text">
+                                <div class="tracking-title">Commande suivie!</div>
+                                <div class="tracking-subtitle">Votre délicieux repas arrive dans 12 min</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Top Brands -->
+    <section class="top-brands">
+        <div class="container">
+            <h2>Marques Populaires Pour Vous</h2>
+            <div class="brands-grid">
+                <div class="brand-item">
+                    <div class="brand-logo">🍔</div>
+                    <span>Burger King</span>
+                </div>
+                <div class="brand-item">
+                    <div class="brand-logo">🍕</div>
+                    <span>Pizzeria</span>
+                </div>
+                <div class="brand-item">
+                    <div class="brand-logo">🌮</div>
+                    <span>Taco Express</span>
+                </div>
+                <div class="brand-item">
+                    <div class="brand-logo">🍣</div>
+                    <span>Sushi Zone</span>
+                </div>
+                <div class="brand-item">
+                    <div class="brand-logo">🍖</div>
+                    <span>Big Belly</span>
+                </div>
+                <div class="brand-item">
+                    <div class="brand-logo">🥘</div>
+                    <span>Mamma Mia</span>
+                </div>
+                <div class="brand-item">
+                    <div class="brand-logo">☕</div>
+                    <span>Café Noir</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Restaurants -->
+    <section class="popular-restaurants">
+        <div class="container">
+            <div class="section-header">
+                <h2>Restaurants Populaires près de vous</h2>
+                <div class="filters">
+                    <button class="filter-btn active">Tous les Filtres</button>
+                    <button class="filter-btn">Notes 4.0+</button>
+                    <button class="filter-btn">Livraison Rapide</button>
+                    <button class="filter-btn">Offres</button>
+                </div>
+            </div>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <div class="special-badge">TENDANCE</div>
+                        <div class="rating">⭐ 4.8</div>
+                    </div>
+                    <div class="restaurant-info">
+                        <h3>Chez Maman Pizza</h3>
+                        <p class="cuisine-type">Italien • Pizza • Méditerranéen</p>
+                        <div class="restaurant-details">
+                            <span class="delivery-time">⏱️ 20-35min</span>
+                            <span class="delivery-fee">💰 500 FC</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <div class="rating">⭐ 4.6</div>
+                    </div>
+                    <div class="restaurant-info">
+                        <h3>Healthy Harvest</h3>
+                        <p class="cuisine-type">Salade • Bowls • Bio</p>
+                        <div class="restaurant-details">
+                            <span class="delivery-time">⏱️ 15-25min</span>
+                            <span class="delivery-fee">🚚 Livraison Gratuite</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <div class="rating">⭐ 4.7</div>
+                    </div>
+                    <div class="restaurant-info">
+                        <h3>Tokyo Sushi House</h3>
+                        <p class="cuisine-type">Japonais • Sushi • Ramen</p>
+                        <div class="restaurant-details">
+                            <span class="delivery-time">⏱️ 35-45min</span>
+                            <span class="delivery-fee">💰 800 FC</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <div class="rating">⭐ 4.5</div>
+                    </div>
+                    <div class="restaurant-info">
+                        <h3>Burger Brothers</h3>
+                        <p class="cuisine-type">Américain • Burgers • Frites</p>
+                        <div class="restaurant-details">
+                            <span class="delivery-time">⏱️ 25-35min</span>
+                            <span class="delivery-fee">💰 600 FC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="load-more-btn">Charger Plus de Restaurants</button>
+        </div>
+    </section>
+
+    <!-- Mobile App Section -->
+    <section class="mobile-app">
+        <div class="container">
+            <div class="app-content">
+                <div class="app-text">
+                    <h2>GullyDelivery dans votre poche!</h2>
+                    <p>Téléchargez notre application mobile pour suivre vos commandes en temps réel et profitez de réductions exclusives.</p>
+                    <div class="app-buttons">
+                        <button class="app-btn google-play">
+                            <span class="app-icon">📱</span>
+                            <div>
+                                <div class="app-btn-small">TÉLÉCHARGER SUR</div>
+                                <div class="app-btn-large">Google Play</div>
+                            </div>
+                        </button>
+                        <button class="app-btn app-store">
+                            <span class="app-icon">🍎</span>
+                            <div>
+                                <div class="app-btn-small">TÉLÉCHARGER SUR</div>
+                                <div class="app-btn-large">App Store</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="app-image">
+                    <div class="phone-mockup">📱</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-icon">📍</span>
+                        <span class="logo-text">Gully<span class="logo-accent">Delivery</span></span>
+                    </div>
+                    <p>Le service de livraison de nourriture le plus rapide et le plus fiable de votre ville. Apportant les saveurs préférées à votre domicile.</p>
+                    <div class="social-links">
+                        <a href="#">📘</a>
+                        <a href="#">📸</a>
+                        <a href="#">🐦</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Entreprise</h3>
+                    <ul>
+                        <li><a href="#">À propos de nous</a></li>
+                        <li><a href="#">Équipe</a></li>
+                        <li><a href="#">Carrières</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Légal</h3>
+                    <ul>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>📧 hello@gullydelivery.com</li>
+                        <li>📞 +243 81 000 0000</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GullyDelivery. Tous droits réservés.</p>
+                <div class="footer-links">
+                    <a href="#">Centre d'aide</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Sécurité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Order Modal (Hidden by default) -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Burger Classic Royal</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="food-image-modal">🍔</div>
+                <p class="food-description">Galette de bœuf wagyu pressée à la main, cheddar vieilli fondu, oignons caramélisés, cornichons maison et notre sauce signature Gully sur un petit pain brioché grillé.</p>
+                <div class="price">1500 FC</div>
+                <div class="options">
+                    <h4>Choisissez votre accompagnement</h4>
+                    <div class="option-group">
+                        <label>
+                            <input type="radio" name="side" value="fries" checked>
+                            <span>Frites Assaisonnées</span>
+                            <span class="option-price">+0,00 FC</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="side" value="wedges">
+                            <span>Quartiers de Patates Douces</span>
+                            <span class="option-price">+300 FC</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="side" value="salad">
+                            <span>Salade Verte</span>
+                            <span class="option-price">+200 FC</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="quantity-selector">
+                    <button class="qty-btn minus">-</button>
+                    <span class="qty">1</span>
+                    <button class="qty-btn plus">+</button>
+                </div>
+                <button class="add-to-order-btn">Ajouter à la Commande • 1500 FC</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
